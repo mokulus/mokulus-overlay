@@ -1,0 +1,39 @@
+diff --git a/Makefile b/Makefile
+index 2ea45e6..7de6de7 100644
+--- a/Makefile
++++ b/Makefile
+@@ -20,12 +20,12 @@ OBJECTS=main.o \
+ 	tail.o
+ INSTALL=install -c
+ 
+-all: ts
++all: tsp
+ 
+ tsretry: tsretry.c
+ 
+-ts: $(OBJECTS)
+-	$(CC) $(LDFLAGS) -o ts $^
++tsp: $(OBJECTS)
++	$(CC) $(LDFLAGS) -o tsp $^
+ 
+ # Test our 'tail' implementation.
+ ttail: tail.o ttail.o
+@@ -52,10 +52,10 @@ tail.o: tail.c main.h
+ ttail.o: ttail.c main.h
+ 
+ clean:
+-	rm -f *.o ts
++	rm -f *.o tsp
+ 
+-install: ts
++install: tsp
+ 	$(INSTALL) -d $(PREFIX)/bin
+-	$(INSTALL) ts $(PREFIX)/bin
++	$(INSTALL) tsp $(PREFIX)/bin
+ 	$(INSTALL) -d $(PREFIX)/share/man/man1
+-	$(INSTALL) -m 644 ts.1 $(PREFIX)/share/man/man1
++	$(INSTALL) -m 644 tsp.1 $(PREFIX)/share/man/man1
+diff --git a/ts.1 b/tsp.1
+similarity index 100%
+rename from ts.1
+rename to tsp.1
